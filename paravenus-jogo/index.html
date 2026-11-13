@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#2B0B3F">
+<title>PARAVÊNUS — Qual empresa combina comigo?</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232B0B3F'/%3E%3Ctext x='16' y='24' font-size='22' text-anchor='middle' fill='%23FF2E93'%3E%E2%99%80%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Fundo animado -->
+<div id="bg" aria-hidden="true">
+  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="grid"></span>
+</div>
+
+<div id="app">
+
+  <!-- HUD (aparece durante a investigação) -->
+  <header id="hud" hidden>
+    <div class="hud-brand"><span class="venus">♀</span> PARA<b>VÊNUS</b></div>
+    <div class="hud-loc" id="hud-loc"></div>
+    <div class="hud-actions">
+      <span class="hud-pill" title="Pistas registradas no caderno">🔎 <b id="hud-pistas">0</b></span>
+      <button class="hud-btn" data-action="caderno" title="Abrir o caderno (N)">📓 <span>Caderno</span></button>
+      <button class="hud-btn" data-action="paravenus" title="Abrir o ParaVênus (P)">🌐 <span>ParaVênus</span></button>
+      <button class="hud-btn" id="hud-mapa" data-action="ir-mapa" title="Voltar ao mapa (M)" hidden>🗺️ <span>Mapa</span></button>
+      <button class="hud-btn icon" data-action="alternar-demo" data-demo-icon title="Modo apresentação">⚡</button>
+      <button class="hud-btn icon" data-action="alternar-som" data-som-icon title="Som ligado/desligado">🔊</button>
+    </div>
+  </header>
+
+  <main id="stage">
+
+    <!-- ============ TELA INICIAL ============ -->
+    <section class="screen active" id="screen-title">
+      <div class="float-chips" aria-hidden="true">
+        <span class="fchip red"   style="left:5%;top:17%;--d:0s">🚩 Baixa presença feminina</span>
+        <span class="fchip green" style="left:72%;top:13%;--d:1.2s">🟢 Programa de mentoria</span>
+        <span class="fchip info"  style="left:7%;top:71%;--d:2.1s">💬 “Mas crescer aqui é difícil…”</span>
+        <span class="fchip green" style="left:70%;top:74%;--d:.6s">🟢 Trabalho flexível</span>
+        <span class="fchip red"   style="left:79%;top:44%;--d:1.8s">🚩 Alta rotatividade</span>
+        <span class="fchip info"  style="left:1%;top:44%;--d:2.6s">💰 R$ 5.800 — e o ambiente?</span>
+      </div>
+      <div class="title-wrap">
+        <div class="venus-mark" aria-hidden="true">♀</div>
+        <h1 class="logo">PARA<span>VÊNUS</span></h1>
+        <p class="title-sub">Jornada de uma Candidata</p>
+        <p class="title-q">Qual empresa combina com você?</p>
+        <p class="title-s">Investigue. Compare. Decida.</p>
+        <nav class="menu">
+          <button class="btn btn-primary btn-xl" data-action="comecar">COMEÇAR</button>
+          <button class="btn" data-action="como-jogar">COMO JOGAR</button>
+          <button class="btn" data-action="creditos">CRÉDITOS</button>
+        </nav>
+        <div class="title-foot">
+          <button class="link-btn" data-action="alternar-som" data-som-label>🔊 Som: ligado</button>
+          <button class="link-btn" data-action="alternar-demo" data-demo-label>⚡ Modo apresentação: desligado</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COMO JOGAR ============ -->
+    <section class="screen" id="screen-howto">
+      <div class="page">
+        <h2 class="page-title">Como jogar</h2>
+        <div class="how-grid">
+          <div class="how-card"><span>🔎</span><b>Investigue as empresas</b><p>Ande pelo escritório e clique nos objetos.</p></div>
+          <div class="how-card"><span>💬</span><b>Converse com funcionárias</b><p>Cada uma tem uma experiência diferente.</p></div>
+          <div class="how-card"><span>💻</span><b>Analise as vagas</b><p>Salário, horário, modalidade e benefícios.</p></div>
+          <div class="how-card"><span>📋</span><b>Procure pistas</b><p>O mural guarda números que ninguém comenta.</p></div>
+          <div class="how-card"><span>🌐</span><b>Consulte o ParaVênus</b><p>Avaliações, denúncias e dados verificados.</p></div>
+          <div class="how-card"><span>🚩</span><b>Identifique red flags</b><p>Sinais de alerta aparecem no caderno.</p></div>
+          <div class="how-card"><span>🟢</span><b>Encontre green flags</b><p>Também há bons sinais — e nenhuma empresa é perfeita.</p></div>
+          <div class="how-card"><span>🎯</span><b>Tome sua decisão</b><p>Aceite uma proposta… ou continue procurando.</p></div>
+        </div>
+        <p class="controls-note">⌨️ <b>WASD</b> ou <b>setas</b> para andar · <b>E</b> para interagir · clique também funciona · <b>N</b> caderno · <b>P</b> ParaVênus · <b>M</b> mapa · <b>Esc</b> fecha janelas</p>
+        <div class="row center">
+          <button class="btn" data-action="menu">← VOLTAR</button>
+          <button class="btn btn-primary" data-action="comecar">COMEÇAR</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CRÉDITOS ============ -->
+    <section class="screen" id="screen-credits">
+      <div class="page narrow">
+        <h2 class="page-title">Créditos</h2>
+        <div class="panel cred">
+          <p><b>Projeto:</b> ParaVênus</p>
+          <p><b>Tipo:</b> Projeto escolar</p>
+          <p><b>Tecnologias:</b> HTML · CSS · JavaScript</p>
+          <p class="cred-note">Preencha os campos abaixo — eles ficam salvos neste navegador.</p>
+          <label>Nome dos alunos<input id="cred-alunos" type="text" placeholder="Ex.: Ana, Bia e Carla" maxlength="120"></label>
+          <label>Turma<input id="cred-turma" type="text" placeholder="Ex.: 3º DS A" maxlength="60"></label>
+          <label>Instituição<input id="cred-inst" type="text" placeholder="Nome da escola" maxlength="120"></label>
+          <label>Professor(a) / orientador(a)<input id="cred-prof" type="text" placeholder="Nome do(a) professor(a)" maxlength="120"></label>
+        </div>
+        <div class="row center"><button class="btn btn-primary" data-action="menu">← VOLTAR AO MENU</button></div>
+      </div>
+    </section>
+
+    <!-- ============ INTRODUÇÃO ============ -->
+    <section class="screen" id="screen-intro">
+      <div class="intro">
+        <div class="intro-avatar" id="intro-avatar"></div>
+        <div class="panel intro-panel">
+          <div id="intro-nome-stage">
+            <h2>Como devemos chamar você?</h2>
+            <p class="muted">Opcional — o nome aparece no caderno e nos finais.</p>
+            <input id="intro-nome-input" type="text" maxlength="18" placeholder="Seu nome" autocomplete="off">
+            <div class="row">
+              <button class="btn" data-action="intro-nome-pular">Pular</button>
+              <button class="btn btn-primary" data-action="intro-nome-ok">Continuar ▶</button>
+            </div>
+          </div>
+          <div id="intro-story-stage" hidden>
+            <div id="intro-lines"></div>
+            <div class="row">
+              <button class="btn" id="intro-skip" data-action="intro-pular">Pular ▶▶</button>
+              <button class="btn btn-primary btn-xl" id="intro-go" data-action="intro-ir" hidden>COMEÇAR INVESTIGAÇÃO</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TRÊS PROPOSTAS ============ -->
+    <section class="screen" id="screen-offers">
+      <div class="page wide">
+        <h2 class="page-title">Três propostas chegaram</h2>
+        <p class="page-sub">Todas parecem ótimas no papel. Mas como é trabalhar lá de verdade?</p>
+        <div class="offers-grid" id="offers-grid"></div>
+        <div class="row center">
+          <button class="btn btn-primary btn-xl" data-action="ir-mapa">IR PARA O MAPA ▶</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MAPA ============ -->
+    <section class="screen" id="screen-map">
+      <div class="map-wrap">
+        <div class="map" id="map">
+          <svg class="map-roads" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M12 72 C 20 50, 25 40, 30 26"/>
+            <path d="M12 72 C 30 86, 45 84, 58 76"/>
+            <path d="M30 26 C 40 18, 48 22, 55 30"/>
+            <path d="M55 30 C 70 30, 78 38, 86 46"/>
+            <path d="M58 76 C 72 74, 82 62, 86 46"/>
+            <path d="M55 30 C 53 45, 56 60, 58 76"/>
+          </svg>
+          <div id="map-blocks" aria-hidden="true"></div>
+          <div id="map-nodes"></div>
+          <div class="map-token" id="map-token" aria-hidden="true"></div>
+        </div>
+        <aside class="panel map-side">
+          <h3>Mapa da investigação</h3>
+          <p class="map-tip" id="map-tip"></p>
+          <div id="map-list"></div>
+          <div class="map-roteiro" id="map-roteiro" hidden></div>
+          <div class="map-btns">
+            <button class="btn" data-action="caderno">📓 Abrir caderno</button>
+            <button class="btn btn-primary" data-action="decidir">🎯 Já posso decidir</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ EMPRESA (sala investigável) ============ -->
+    <section class="screen" id="screen-company">
+      <div class="room-wrap" id="room-wrap"></div>
+    </section>
+
+    <!-- ============ DECISÃO ============ -->
+    <section class="screen" id="screen-decision">
+      <div class="page wide">
+        <h2 class="page-title">Chegou a hora de decidir.</h2>
+        <p class="page-sub">Releia o caderno, compare o que descobriu e escolha — ou continue procurando.</p>
+        <div class="dec-grid" id="decision-grid"></div>
+        <div class="row center">
+          <button class="btn" data-action="caderno">📓 Rever caderno</button>
+          <button class="btn" data-action="paravenus">🌐 ParaVênus</button>
+          <button class="btn" data-action="ir-mapa">🗺️ Voltar à investigação</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL ============ -->
+    <section class="screen" id="screen-ending"><div class="end-box" id="ending-box"></div></section>
+
+    <!-- ============ ESTATÍSTICAS ============ -->
+    <section class="screen" id="screen-stats"><div class="stats-box" id="stats-box"></div></section>
+
+  </main>
+</div>
+
+<!-- Caixa de diálogo -->
+<div id="dialog" hidden role="dialog" aria-live="polite">
+  <div class="dlg-portrait" id="dlg-portrait"></div>
+  <div class="dlg-body">
+    <div class="dlg-name" id="dlg-name"></div>
+    <p class="dlg-text" id="dlg-text"></p>
+    <span class="dlg-next" id="dlg-next">Continuar ▶</span>
+  </div>
+</div>
+
+<div id="toasts" aria-live="polite"></div>
+<div id="modal-root"></div>
+
+<noscript><p style="position:fixed;inset:0;display:grid;place-items:center;background:#2B0B3F;color:#FFF8EF;font-family:sans-serif">Ative o JavaScript para jogar o ParaVênus.</p></noscript>
+<script src="script.js"></script>
+</body>
+</html>

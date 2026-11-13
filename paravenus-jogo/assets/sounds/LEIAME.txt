@@ -1,0 +1,1 @@
+Pasta reservada para sounds (o jogo atual gera gráficos em SVG e sons via WebAudio, sem arquivos externos).
